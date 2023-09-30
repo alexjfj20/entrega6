@@ -1,6 +1,7 @@
 import React from "react";
 
-const trackList = ({ track }) => {
+
+const TrackList = ({ track }) => {
   return (
     <section>
       <header>
@@ -21,4 +22,4 @@ const trackList = ({ track }) => {
   );
 };
 
-export default trackList;
+export default TrackList;

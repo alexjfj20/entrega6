@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import TrackList from "./trackList";
+import TrackList from "./TrackList";
 
 const HeaderMusic = () => {
   const tracksPlaylist = useSelector((store) =>  store.tracks) || [];
