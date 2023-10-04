@@ -1,41 +1,41 @@
-import { Route, Routes } from 'react-router-dom'
-import './App.css'
-import HomePage from './pages/HomePage'
-import LoginPage from './pages/LoginPage'
-import RegisterPage from './pages/RegisterPage'
-import { useEffect } from 'react'
-import ProtecteRoutes from './pages/ProtecteRoutes'
-import { useDispatch } from 'react-redux'
-import { setCredentialsSlice } from './store/slices/creadentials.slice'
-
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import { useEffect } from "react";
+import ProtecteRoutes from "./pages/ProtecteRoutes";
+import { useDispatch } from "react-redux";
+import { setCredentialsSlice } from "./store/slices/creadentials.slice";
+import ArtistPage from "./pages/ArtistPage";
+import TracksPage from "./pages/TracksPage";
 
 function App() {
-const dispatch = useDispatch() 
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    const token = localStorage.removeItem("toke")
-    const username = localStorage.removeItem("username")
-    const email = localStorage.removeItem("email")
-    const obj = {token, username, email}
-   dispatch(setCredentialsSlice(obj))
-
-  }, [])
-
+    const token = localStorage.getItem("toke");
+    const username = localStorage.getItem("username");
+    const email = localStorage.getItem("email");
+    const obj = { token, username, email };
+    dispatch(setCredentialsSlice(obj));
+  }, []);
 
   return (
-   <div>
-      
-     <Routes>
-       
-        <Route path='/auth/login' element={<LoginPage/>} />
-        <Route path='/auth/register' element={<RegisterPage/>} />
+    <div>
+      <Routes>
+        <Route path='/auth/login' element={<LoginPage />} />
+        <Route path='/auth/register' element={<RegisterPage />} />
 
-          <Route element={<ProtecteRoutes />} />
-            <Route path='/' element={<HomePage />} />
-          <Route />  
+        <Route element={<ProtecteRoutes />} />
+        <Route path='/' element={<HomePage />} />
+        <Route path='/track/:id' element={<TracksPage />} />
+        <Route path='/artist/:id' element={<ArtistPage />} />
+
+        <Route />
       </Routes>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

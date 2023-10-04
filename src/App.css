@@ -4,3 +4,12 @@
   height: 100px;
 
 }
+
+/* esta en TrackInfo */
+.artist_04 {
+
+  display: flex;
+  width: 300px;
+  height: 300px;
+
+} 

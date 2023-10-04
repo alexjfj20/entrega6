@@ -4,9 +4,9 @@ import { Navigate, Outlet } from "react-router-dom";
 import HeaderMusic from "../components/shared/HeaderMusic";
 
 const ProtecteRoutes = () => {
-  const credentials = useSelector((store) => store.credentials);
+  
 
-  if (credentials !== null) {
+  if (localStorage.getItem("token") !== null) {
     return (
       <>
         <HeaderMusic />
@@ -14,7 +14,7 @@ const ProtecteRoutes = () => {
       </>
     );
   } else {
-    return <Navigate to="/auth/login" />;
+    return (<Navigate to="/auth/login" />)
   }
 };
 

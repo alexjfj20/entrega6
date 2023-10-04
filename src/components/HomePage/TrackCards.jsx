@@ -1,6 +1,7 @@
 import React from "react";
 import { addTrack } from "../../store/slices/track.slic";
 import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 
 const TrackCards = ({ track }) => {
 
@@ -9,11 +10,17 @@ const TrackCards = ({ track }) => {
   const handleAddTrack = () => {
      
     dispatch( addTrack(track))
+
+    const dispatch = useDispatch()
+
+    const navigate = useNavigate()
   }
+ const trackPlayList = useSelector(store => store. tracks)
 
-  const trackPlayList = useSelector(store => store. tracks)
-
+ const handleArtist = () => {
+     navigate(`/artist/${id}`)  
  
+ }
 
   return (
     <section className="container">
@@ -21,10 +28,12 @@ const TrackCards = ({ track }) => {
         <img src={track.album.images[0].url} alt="Album Cover" />
       </header>
       <article>
-        <h3>{track.name}</h3>
+       <Link to={`/track/${track.id}`}><h3>{track.name}</h3></Link>
         <ul>
           {track.artists.map((artist) => {
-            <i key={artist.id}>{artist.name} </i>; 
+            <li onClick={() => handleArtist(artist.id)}
+             key={artist.id}
+             >{artist.name} </li>; 
           })}
         </ul>
       </article>
