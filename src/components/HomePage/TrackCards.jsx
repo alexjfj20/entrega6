@@ -6,14 +6,15 @@ import { Link, useNavigate } from "react-router-dom";
 const TrackCards = ({ track }) => {
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const handleAddTrack = () => {
      
     dispatch( addTrack(track))
 
-    const dispatch = useDispatch()
+   
 
-    const navigate = useNavigate()
+    
   }
  const trackPlayList = useSelector(store => store. tracks)
 

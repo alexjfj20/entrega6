@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { setCredentialsSlice } from "./store/slices/creadentials.slice";
 import ArtistPage from "./pages/ArtistPage";
 import TracksPage from "./pages/TracksPage";
+import PlaylistPage from "./pages/PlaylistPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,12 +28,13 @@ function App() {
         <Route path='/auth/login' element={<LoginPage />} />
         <Route path='/auth/register' element={<RegisterPage />} />
 
-        <Route element={<ProtecteRoutes />} />
+        <Route element={<ProtecteRoutes />} >
         <Route path='/' element={<HomePage />} />
         <Route path='/track/:id' element={<TracksPage />} />
         <Route path='/artist/:id' element={<ArtistPage />} />
+        <Route path='/Playlist' element={<PlaylistPage />} />
 
-        <Route />
+        </Route >
       </Routes>
     </div>
   );
